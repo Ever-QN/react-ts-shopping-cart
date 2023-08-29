@@ -1,6 +1,6 @@
 ## React Shopping Cart Application
 
-This is a simple shopping cart application built using React and TypeScript. It allows users to view and add items to their shopping cart.
+This is a simple shopping cart application built using React, Typescript and Tailwind. It allows users to view and add items to their shopping cart.
 
 ## Features
 
@@ -13,6 +13,7 @@ This is a simple shopping cart application built using React and TypeScript. It 
 - React <br>
 - React Router DOM <br>
 - TypeScript <br>
+- Tailwind <br>
 
 ## API
 
