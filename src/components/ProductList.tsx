@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
-
-type Product = {
-    id: number
-    title: string
-}
+import Product from './Product';
 
 function FetchProductList() {
-    const [productList, setProductList] = useState<Array<Product>>([]);
+    const [productList, setProductList] = useState([]);
 
     useEffect(() => {
         async function FetchProducts() {
@@ -31,13 +27,13 @@ function FetchProductList() {
 
 function ProductList() {
 
-    const productList = FetchProductList()
+    const productList = FetchProductList();
 
     return (
         <div className="product-list">
             <h1 className='text-3xl font-bold underline'>Items</h1>
                 <ul>
-                    {productList.map(product => <li key={product.id}>{`${product.id} ${product.title}`}</li>)}
+                    {productList.map(product => <li key={product}><Product /></li>)}
                 </ul>
         </div>
     )
