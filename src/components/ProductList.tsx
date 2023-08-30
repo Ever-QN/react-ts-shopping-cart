@@ -30,7 +30,7 @@ function ProductList() {
     const productList = FetchProductList();
 
     return (
-        <div className="products-list-container">
+        <div className='products-list-container'>
             <h1 className='text-3xl font-bold underline'>Items</h1>
             <ul className='products-list'>
                 {productList.map(product =>
