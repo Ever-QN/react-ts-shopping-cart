@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Product from './Product';
 
-
 function FetchProductList() {
     const [productList, setProductList] = useState<Array<Product>>([]);
 
@@ -31,13 +30,14 @@ function ProductList() {
     const productList = FetchProductList();
 
     return (
-        <div className="product-list">
+        <div className="products-list-container">
             <h1 className='text-3xl font-bold underline'>Items</h1>
-                <ul>{productList.map(product =>
+            <ul className='products-list'>
+                {productList.map(product =>
                     <Product key={product.id} category={product.category} description={product.description} id={product.id} image={product.image} price={product.price} rating={product.rating} title={product.title}/>)}
                 </ul>
         </div>
     )
 }   
 
-export default ProductList
+export default ProductList;

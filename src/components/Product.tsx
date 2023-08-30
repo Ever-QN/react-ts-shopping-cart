@@ -1,3 +1,5 @@
+import '../index.css'
+
 
 type Product = {
     category: string;
@@ -15,13 +17,16 @@ type Rating = {
 }
 
 
-function Product( { ...product }: Product ) {
+function Product( { category, description, id, image, price, rating, title }: Product ) {
 
     return (
-        <div>
-            <ul>{product.title}</ul>
-        </div>
+        <>
+            <li className={'item-id-' + id.toString()}>
+                {id} {title} ${price}
+
+            </li>
+        </>
     )
 }
 
-export default Product
+export default Product;
