@@ -1,3 +1,4 @@
+
 type Product = {
     category: string;
     description: string;
@@ -13,10 +14,12 @@ type Rating = {
     rate: number;
 }
 
-function Product(prop: Product) {
+
+function Product( { ...product }: Product ) {
 
     return (
-        <div className={prop.id.toString()}>
+        <div>
+            <ul>{product.title}</ul>
         </div>
     )
 }
