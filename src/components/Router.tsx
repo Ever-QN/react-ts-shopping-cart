@@ -3,24 +3,22 @@ import Shop from "../pages/Shop";
 import ShoppingCart from "../pages/ShoppingCart";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
+import App from "../App";
 
 function Router() {
-    function createBrowserRouter() {
-        [
-            {
-                path: '/',
-                element: <Home />,
-                errorElement: <ErrorPage />,
-            },
-            {
-                path: 'shop/:name',
-                element: <Shop />,
-            },
-        ]
-    }
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <App />,
+            errorElement: <ErrorPage />,
+        },
+        {
+            path: "shop/:name",
+            element: <Shop />,
+        },
+    ]);
 
-
-    return <RouterProvider router={createBrowserRouter} />
+    return <RouterProvider router={router} />
 }
 
 export default Router;
