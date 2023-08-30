@@ -8,12 +8,12 @@ import App from "../App";
 function Router() {
     const router = createBrowserRouter([
         {
-            path: "/",
+            path: '/',
             element: <App />,
             errorElement: <ErrorPage />,
         },
         {
-            path: "shop/:name",
+            path: '/shop',
             element: <Shop />,
         },
     ]);
