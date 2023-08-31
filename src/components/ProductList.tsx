@@ -32,7 +32,7 @@ function ProductList() {
     return (
         <div className='products-list-container'>
             <h1 className='text-3xl font-bold underline'>Items</h1>
-            <ul className='products-list'>
+            <ul className='products-list '>
                 {productList.map(product =>
                     <Product key={product.id} category={product.category} description={product.description} id={product.id} image={product.image} price={product.price} rating={product.rating} title={product.title}/>)}
                 </ul>

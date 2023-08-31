@@ -22,8 +22,8 @@ function Product( { category, description, id, image, price, rating, title }: Pr
     return (
         <>
             <li className={'item-id-' + id.toString()}>
+                <img src={image} width={250} height={250}/>
                 {id} {title} ${price}
-
             </li>
         </>
     )
