@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom"
+import NavBar from "../components/NavBar"
 
 function Home() {
     return (
         <div className='container'>
+            <NavBar />
             <h1>Home</h1>
             <p>Hello!</p>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to='shop'>Shop</Link>
-                    </li>
-                </ul>
-            </nav>
         </div>
     )
 }

@@ -1,13 +1,11 @@
-import NavCartBtn from "../components/NavCartBtn";
-import NavHomeBtn from "../components/NavHomeBtn";
+import NavBar from "../components/NavBar";
 import ProductList from "../components/ProductList";
 
 function Shop() {
     return (
         <>
+            <NavBar />
             <ProductList />
-            <NavHomeBtn />
-            <NavCartBtn />
         </>
     )
 }
