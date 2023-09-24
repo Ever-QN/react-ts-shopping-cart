@@ -1,12 +1,15 @@
-// import { Routes, Route } from 'react-router-dom';
-import './index.css'
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
   return (
-    <h1 className='text-3xl font-bold underline'>
-      Hi
-    </h1>
+    <div className='container'>
+      <Routes> 
+        <Route path='/' element={<Home />} />
+        <Route path='/store' element={<Store />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
+    </div>
   );
 }
 
