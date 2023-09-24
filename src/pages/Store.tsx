@@ -34,7 +34,7 @@ export default function Store() {
     return (
         <div className='container'>
             <h1 className='text-xl font-bold underline mb-4'>Store</h1>
-            <ul className='flex-col justify-center'>
+            <ul className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                 {products.map((product) => 
                 <li key={product.id} className='border-2'>
                     {product.title}, ${product.price}
