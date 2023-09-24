@@ -17,6 +17,9 @@ export default function StoreItem({
     rating,
     title
 }: StoreItemProps) {
+
+    const quantity = 0; // Placeholder to test add to cart btn
+
     return (
         <div className='card h-96 max-h-full border-orange-500 border-2 p-4 overflow-hidden'>
             <div className='card-img flex justify-center mb-4'>
@@ -26,6 +29,9 @@ export default function StoreItem({
                 <div className='card-title flex justify-between items-baseline mb-4'>
                     <span className='text-base'>{title}</span>
                     <span className='ml-2 text-lg'>${price}</span>
+                </div>
+                <div className='mt-auto'>
+                    
                 </div>
             </div>
         </div>
