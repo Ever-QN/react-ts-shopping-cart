@@ -36,8 +36,8 @@ export default function StoreItem({
                     {quantity === 0 ? (
                         <button className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>+ Add to Cart</button>
                     ) : (
-                        <div className='flex items-center flex-col gap-2 border-orange-500 border-2'>
-                            <div className='flex items-center justify-center gap-2 border-orange-500 border-2'>
+                        <div className='flex items-center flex-col gap-2'>
+                            <div className='flex items-center justify-center gap-2'>
                                 <button className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>-</button>
                                 <div className=''>
                                     <span className='text-3xl'>{quantity}</span> in cart
