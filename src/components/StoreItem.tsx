@@ -12,12 +12,9 @@ type StoreItemProps = {
 }
 
 export default function StoreItem({
-    category,
-    description,
     id,
     image,
     price,
-    rating,
     title
 }: StoreItemProps) {
 
