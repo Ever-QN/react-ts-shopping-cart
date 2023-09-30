@@ -1,3 +1,5 @@
+import formatCurrency from "../utilities/formatCurrency";
+
 type StoreItemProps = {
     category: string;
     description: string;
@@ -28,7 +30,7 @@ export default function StoreItem({
             <div className='card-body flex-col'>
                 <div className='card-title flex justify-between items-baseline mb-4'>
                     <span className='text-base'>{title}</span>
-                    <span className='ml-2 text-lg'>${price}</span>
+                    <span className='ml-2 text-lg'>{formatCurrency(price)}</span>
                 </div>
                 <div className='mt-auto'>
                     
