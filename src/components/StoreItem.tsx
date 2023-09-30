@@ -1,3 +1,4 @@
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import formatCurrency from "../utilities/formatCurrency";
 
 type StoreItemProps = {
@@ -20,7 +21,14 @@ export default function StoreItem({
     title
 }: StoreItemProps) {
 
-    const quantity = 1; // Placeholder to test add to cart btn
+    const { 
+        getItemQuantity, 
+        increaseCartQuantity, 
+        decreaseCartQuantity, 
+        removeFromCart, 
+    } = useShoppingCart()
+
+    const quantity = getItemQuantity(id);
 
     return (
         <div className='card h-100 max-h-full p-4 overflow-hidden'>
@@ -34,17 +42,17 @@ export default function StoreItem({
                 </div>
                 <div className='mt-auto'>
                     {quantity === 0 ? (
-                        <button className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>+ Add to Cart</button>
+                        <button className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => increaseCartQuantity(id)}>+ Add to Cart</button>
                     ) : (
                         <div className='flex items-center flex-col gap-2'>
                             <div className='flex items-center justify-center gap-2'>
-                                <button className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>-</button>
+                                <button className=' bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => decreaseCartQuantity(id)}>-</button>
                                 <div className=''>
                                     <span className='text-3xl'>{quantity}</span> in cart
                                 </div>
-                                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>+</button>
+                                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => increaseCartQuantity(id)}>+</button>
                             </div>
-                            <button className=' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Remove</button>
+                            <button className=' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onClick={() => removeFromCart(id)}>Remove</button>
                         </div> 
                         )}
                 </div>
