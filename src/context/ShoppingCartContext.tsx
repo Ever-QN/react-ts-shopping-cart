@@ -23,11 +23,17 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) {
-
     const [cartItems, setCartItems] = useState<CartItem[]>([])
 
+    function getItemQuantity(id: number) {
+        return cartItems.find(item => item.id === id)?.quantity || 0
+    }
+
+    function increaseCartQuantity(id: number) {
+        
+    }
 
     return (
-        <ShoppingCartContext.Provider value={{}}>{children}</ShoppingCartContext.Provider>
+        <ShoppingCartContext.Provider value={{ getItemQuantity }}>{children}</ShoppingCartContext.Provider>
     )
 }
