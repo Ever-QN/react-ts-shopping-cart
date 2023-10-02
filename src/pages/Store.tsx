@@ -1,36 +1,9 @@
-import { useEffect, useState } from "react"
 import StoreItem from "../components/StoreItem";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 export default function Store() {
 
-    const [products, setProducts] = useState<Array<product>>([]);
-
-    type product = {
-        category: string;
-        description: string;
-        id: number;
-        image: string;
-        price: number;
-        rating: object;
-        title: string;
-    }
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch('https://fakestoreapi.com/products');
-                if (!response.ok) {
-                    throw new Error('Network response error');
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                console.error('Error fetching the data: ', error);
-            }
-        }
-
-        fetchData();
-    }, []);
+    const { products } = useShoppingCart();
 
     return (
         <div className='container mx-auto'>

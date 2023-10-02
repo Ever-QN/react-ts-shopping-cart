@@ -9,6 +9,16 @@ type CartItem = {
     quantity: number
 }
 
+type product = {
+    category: string;
+    description: string;
+    id: number;
+    image: string;
+    price: number;
+    rating: object;
+    title: string;
+}
+
 type ShoppingCartContext = {
     getItemQuantity: (id: number) => number
     increaseCartQuantity: (id: number) => void
@@ -16,6 +26,7 @@ type ShoppingCartContext = {
     removeFromCart: (id: number) => void
     cartQuantity: number
     cartItems: CartItem[]
+    products: product[]
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -27,7 +38,22 @@ export function useShoppingCart() {
 export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+    const [products, setProducts] = useState<Array<product>>([]);
+
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
+
+    async function fetchData() {
+        try {
+            const response = await fetch('https://fakestoreapi.com/products');
+            if (!response.ok) {
+                throw new Error('Network response error');
+            }
+            const data = await response.json();
+            setProducts(data);
+        } catch (error) {
+            console.error('Error fetching the data: ', error);
+        }
+    }
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => item.id === id)?.quantity || 0
@@ -71,6 +97,8 @@ export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) 
         })
     }
 
+    fetchData();
+    
     return (
         <ShoppingCartContext.Provider value={{ 
             getItemQuantity, 
@@ -79,6 +107,7 @@ export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) 
             removeFromCart,
             cartItems,
             cartQuantity, 
+            products,
         }}>
             {children}
         </ShoppingCartContext.Provider>
