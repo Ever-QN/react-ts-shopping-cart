@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { useShoppingCart } from "../context/ShoppingCartContext"
 
@@ -12,7 +13,10 @@ export default function Cart() {
                 <CartItem key={item.id} {...item} />
                 ))
                 ) : (
-                    <h1>No items in your cart!</h1>
+                    <div className="flex flex-col justify-center items-center">
+                        <h1 className='text-3xl font-bold p-4 flex justify-center'>No items in your cart!</h1>
+                        <NavLink to='/store' className='hover:underline'><button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded justify-center'>Shop now</button></NavLink>
+                    </div>
                 )
             }
         </>
