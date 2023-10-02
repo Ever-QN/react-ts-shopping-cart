@@ -7,9 +7,14 @@ export default function Cart() {
 
     return (
         <>
-            {cartItems.map(item => (
+            {cartItems.length > 0 ? (
+                cartItems.map(item => (
                 <CartItem key={item.id} {...item} />
-            ))}
+                ))
+                ) : (
+                    <h1>No items in your cart!</h1>
+                )
+            }
         </>
     )
 }
