@@ -1,12 +1,12 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 type ShoppingCartProviderProps = {
-    children: ReactNode
+    children: ReactNode;
 }
 
 type CartItem = {
-    id: number
-    quantity: number
+    id: number;
+    quantity: number;
 }
 
 type product = {
@@ -20,13 +20,13 @@ type product = {
 }
 
 type ShoppingCartContext = {
-    getItemQuantity: (id: number) => number
-    increaseCartQuantity: (id: number) => void
-    decreaseCartQuantity: (id: number) => void
-    removeFromCart: (id: number) => void
-    cartQuantity: number
-    cartItems: CartItem[]
-    products: product[]
+    getItemQuantity: (id: number) => number;
+    increaseCartQuantity: (id: number) => void;
+    decreaseCartQuantity: (id: number) => void;
+    removeFromCart: (id: number) => void;
+    cartQuantity: number;
+    cartItems: CartItem[];
+    products: product[];
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -42,18 +42,23 @@ export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) 
 
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
 
-    async function fetchData() {
-        try {
-            const response = await fetch('https://fakestoreapi.com/products');
-            if (!response.ok) {
-                throw new Error('Network response error');
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch('https://fakestoreapi.com/products');
+                if (!response.ok) {
+                    throw new Error('Network response error');
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching the data: ', error);
             }
-            const data = await response.json();
-            setProducts(data);
-        } catch (error) {
-            console.error('Error fetching the data: ', error);
         }
-    }
+
+        fetchData();
+    }, [])
+    
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => item.id === id)?.quantity || 0
@@ -97,8 +102,6 @@ export function ShoppingCartProvider( { children } : ShoppingCartProviderProps) 
         })
     }
 
-    fetchData();
-    
     return (
         <ShoppingCartContext.Provider value={{ 
             getItemQuantity, 
