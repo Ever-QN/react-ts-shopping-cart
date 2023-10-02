@@ -1,3 +1,4 @@
+import CartItem from "../components/CartItem";
 import { useShoppingCart } from "../context/ShoppingCartContext"
 
 export default function Cart() {
