@@ -10,9 +10,17 @@ export default function Cart() {
     return (
         <>
             {cartItems.length > 0 ? (
-                cartItems.map((item) => (
-                    <CartItem key={item.id} {...item} />
-                ))
+                <>
+                    <div className='ms-auto font-bold text-3xl'>
+                        Total {formatCurrency(cartItems.reduce((total, cartItem) => {
+                            const item = products.find(i => i.id === cartItem.id)
+                            return total + (item?.price || 0) * cartItem.quantity;
+                    }, 0))}
+                    </div>
+                    {cartItems.map((item) => (
+                        <CartItem key={item.id} {...item} />
+                    ))}
+                </>
             ) : (
                 <div className="flex flex-col justify-center items-center">
                     <h1 className='text-3xl font-bold p-4 flex justify-center'>No items in your cart!</h1>
@@ -23,12 +31,7 @@ export default function Cart() {
                     </NavLink>
                 </div>
             )}
-            <div className='ms-auto font-bold text-3xl'>
-                Total {formatCurrency(cartItems.reduce((total, cartItem) => {
-                    const item = products.find(i => i.id === cartItem.id)
-                    return total + (item?.price || 0) * cartItem.quantity;
-                }, 0))}
-            </div>
+
         </>
     );
 }
