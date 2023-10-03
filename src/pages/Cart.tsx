@@ -11,15 +11,15 @@ export default function Cart() {
         <>
             {cartItems.length > 0 ? (
                 <>
-                    <div className='ms-auto font-bold text-3xl'>
+                    {cartItems.map((item) => (
+                        <CartItem key={item.id} {...item} />
+                    ))}
+                    <div className='ms-auto flex justify-end font-bold text-3xl p-4 bg-slate-300'>
                         Total {formatCurrency(cartItems.reduce((total, cartItem) => {
                             const item = products.find(i => i.id === cartItem.id)
                             return total + (item?.price || 0) * cartItem.quantity;
                     }, 0))}
                     </div>
-                    {cartItems.map((item) => (
-                        <CartItem key={item.id} {...item} />
-                    ))}
                 </>
             ) : (
                 <div className="flex flex-col justify-center items-center">
