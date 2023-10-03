@@ -28,12 +28,12 @@ export default function StoreItem({
     const quantity = getItemQuantity(id);
 
     return (
-        <div className='card h-100 max-h-full p-4 overflow-hidden'>
+        <div className='grid grid-cols-none h-100 p-4 w-0 min-w-full'>
             <div className='card-img flex justify-center mb-4'>
                 <img className='w-56 h-56 object-contain ' src={image} />
             </div>
             <div className='card-body flex-col'>
-                <div className='card-title flex justify-between items-baseline mb-4'>
+                <div className='flex justify-between items-baseline mb-4'>
                     <span className='text-base'>{title}</span>
                     <span className='ml-2 text-lg'>{formatCurrency(price)}</span>
                 </div>
