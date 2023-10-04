@@ -14,7 +14,7 @@ export default function Cart() {
                     {cartItems.map((item) => (
                         <CartItem key={item.id} {...item} />
                     ))}
-                    <div className='ms-auto flex justify-end font-bold text-3xl p-4 bg-slate-300'>
+                    <div className='ms-auto flex justify-end font-bold text-3xl p-4 bg-slate-300 fixed bottom-0 right-0'>
                         Total {formatCurrency(cartItems.reduce((total, cartItem) => {
                             const item = products.find(i => i.id === cartItem.id)
                             return total + (item?.price || 0) * cartItem.quantity;
