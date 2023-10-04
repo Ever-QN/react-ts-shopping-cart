@@ -2,6 +2,12 @@
 
 This is a simple shopping cart application built using React, Typescript and Tailwind. It allows users to view and add items to their shopping cart.
 
+## Todo
+
+- Implement localStorage for cart items
+- Re-style the entire cart page for better user experience
+- Align cards in store page properly when product title wraps
+
 ## Features
 
 - Shop Page: Lists available products with card elements for each product. Users can adjust the quantity of items they want to buy. <br>
